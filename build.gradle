@@ -1,0 +1,13 @@
+task build (type : Exec) {
+     print 'Building Demo'
+     //exec { commandLine = ["sudo python3 setup.py install"] }
+     executable = "ls";
+    standardOutput = new ByteArrayOutputStream()
+    ext.output = {
+       return standardOutput.toString()
+    }
+}
+task do_all{
+  build.execute();
+}
+
